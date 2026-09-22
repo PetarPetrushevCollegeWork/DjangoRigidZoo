@@ -1,35 +1,52 @@
 {% extends 'webpages/base.html' %} {% block content %} {% load static %}
 <h1 class="text-center">Welcome to Rigit Zoo!</h1>
-<p>Here are some images of various cats as they are cute and are chillaxing.</p>
-<img
-  height="400px"
-  alt="Image of a cat"
-  src="{% static 'images/kitty1.webp' %}"
-/>
-<img
-  height="400px"
-  alt="Image of a cat"
-  src="{% static 'images/kitty2.webp' %}"
-/>
-<img
-  height="400px"
-  alt="Image of a cat"
-  src="{% static 'images/kitty3.webp' %}"
-/>
-<img
-  height="400px"
-  alt="Image of a cat"
-  src="{% static 'images/kitty4.webp' %}"
-/>
-<img
-  height="400px"
-  alt="Image of a cat"
-  src="{% static 'images/kitty5.webp' %}"
-/>
-<img
-  height="400px"
-  alt="Image of a cat"
-  src="{% static 'images/kitty6.webp' %}"
-/>
-
+<p class="text-center">
+  Here are some images of various cats as they are cute and are chillaxing.
+</p>
+<div class="container">
+  <div class="row g-3">
+    <div class="col-12 col-md-4">
+      <img
+        class="w-100 object-fit-contain h-100"
+        alt="Image of a cat"
+        src="{% static 'images/kitty1.webp' %}"
+      />
+    </div>
+    <div class="col-12 col-md-4">
+      <img
+        class="w-100 object-fit-contain h-100"
+        alt="Image of a cat"
+        src="{% static 'images/kitty2.webp' %}"
+      />
+    </div>
+    <div class="col-12 col-md-4">
+      <img
+        class="w-100 object-fit-contain h-100"
+        alt="Image of a cat"
+        src="{% static 'images/kitty3.webp' %}"
+      />
+    </div>
+    <div class="col-12 col-md-4">
+      <img
+        class="w-100 object-fit-contain h-100"
+        alt="Image of a cat"
+        src="{% static 'images/kitty4.webp' %}"
+      />
+    </div>
+    <div class="col-12 col-md-4">
+      <img
+        class="w-100 object-fit-contain h-100"
+        alt="Image of a cat"
+        src="{% static 'images/kitty5.webp' %}"
+      />
+    </div>
+    <div class="col-12 col-md-4">
+      <img
+        class="w-100 object-fit-contain h-100"
+        alt="Image of a cat"
+        src="{% static 'images/kitty6.webp' %}"
+      />
+    </div>
+  </div>
+</div>
 {% endblock %}
