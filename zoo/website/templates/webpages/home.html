@@ -1,52 +1,140 @@
 {% extends 'webpages/base.html' %} {% block content %} {% load static %}
-<h1 class="text-center">Welcome to Rigit Zoo!</h1>
-<p class="text-center">
-  Here are some images of various cats as they are cute and are chillaxing.
-</p>
-<div class="container">
-  <div class="row g-3">
-    <div class="col-12 col-md-4">
+<div class="bg-primary position-relative text-center" id="hero">
+  <img
+    src="{% static 'images/zoo-animals-photo.jpg' %}"
+    alt="A photo of an elephant, girrafe, lion, and more on a green grass field."
+    class="w-100 opacity-50 user-select-none rounded-2"
+    loading="eager"
+  />
+  <div
+    class="position-absolute top-0 mx-5 text-light my-5 flex-column d-flex"
+    id="hero-text"
+  >
+    <h1 class="fw-bold text-start fs-1">Rigid Zoo</h1>
+    <span class="text-start align-content-start"
+      >A super fun experience for family and friends to view exotic
+      animals.</span
+    >
+  </div>
+</div>
+<h2 class="text-center fw-bold my-5">Our animals</h2>
+<div class="container container-fluid text-center" id="our-animals-section">
+  <div class="row">
+    <div class="col-12 col-lg-4 g-2">
       <img
-        class="w-100 object-fit-contain h-100"
-        alt="Image of a cat"
-        src="{% static 'images/kitty1.webp' %}"
+        class="object-fit-contain rounded-2"
+        src="{% static 'images/donkey.jpg' %}"
+        alt="An image of a donkey"
       />
+      <h3 class="fw-bold fs-3 my-2">Donkey</h3>
+      <div class="container-fluid">
+        <p class="text-start">
+          The donkey is a domesticated member of the horse family, easily
+          recognized by its long ears, stocky build, and distinctive braying
+          call. Originally adapted to arid desert environments, these
+          hardworking animals are known for their exceptional stamina,
+          intelligence, and sure-footed nature. Though often stereotyped as
+          stubborn, their reluctance to move is usually a cautious
+          self-preservation instinct when they sense potential danger.
+        </p>
+      </div>
     </div>
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-lg-4 g-2">
       <img
-        class="w-100 object-fit-contain h-100"
-        alt="Image of a cat"
-        src="{% static 'images/kitty2.webp' %}"
+        class="object-fit-contain rounded-2"
+        src="{% static 'images/elephant.jpg' %}"
+        alt="An image of an elephant"
       />
+      <h3 class="fw-bold fs-3 my-2">Elephant</h3>
+      <div class="container-fluid">
+        <p class="text-start">
+          The elephant is the world's largest living land animal, instantly
+          recognizable by its long prehensile trunk, large fan-like ears, and
+          prominent ivory tusks. Highly intelligent and deeply social, these
+          gentle giants form tight-knit family herds guided by an experienced
+          matriarch. Native to sub-Saharan Africa and South and Southeast Asia,
+          they play a vital ecosystem role by shaping their habitats and
+          creating paths used by other wildlife.
+        </p>
+      </div>
     </div>
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-lg-4 g-2">
       <img
-        class="w-100 object-fit-contain h-100"
-        alt="Image of a cat"
-        src="{% static 'images/kitty3.webp' %}"
+        class="object-fit-contain rounded-2"
+        src="{% static 'images/girraffe.jpg' %}"
+        alt="An image of a girraffe"
       />
-    </div>
-    <div class="col-12 col-md-4">
-      <img
-        class="w-100 object-fit-contain h-100"
-        alt="Image of a cat"
-        src="{% static 'images/kitty4.webp' %}"
-      />
-    </div>
-    <div class="col-12 col-md-4">
-      <img
-        class="w-100 object-fit-contain h-100"
-        alt="Image of a cat"
-        src="{% static 'images/kitty5.webp' %}"
-      />
-    </div>
-    <div class="col-12 col-md-4">
-      <img
-        class="w-100 object-fit-contain h-100"
-        alt="Image of a cat"
-        src="{% static 'images/kitty6.webp' %}"
-      />
+      <h3 class="fw-bold fs-3 my-2">Giraffe</h3>
+      <div class="container-fluid">
+        <p class="text-start">
+          The giraffe is the world's tallest living land mammal, instantly
+          recognizable by its exceptionally long neck, towering legs, and
+          distinctive spotted coat pattern. Native to the African savannas and
+          woodlands, it uses its height alongside a long, dexterous prehensile
+          tongue to comfortably browse leaves from high treetop foliage like
+          acacias. Despite their massive stature, giraffes are gentle herbivores
+          that move with a surprisingly graceful, synchronized gait across open
+          landscapes.
+        </p>
+      </div>
     </div>
   </div>
+</div>
+<div class="bg-primary text-light overflow-y-visible position-relative">
+  <div class="circular-primary-container-top"></div>
+  <h2 class="text-center fw-bold my-5">Pricing</h2>
+  <div
+    class="container container-fluid d-flex align-content-center justify-content-center"
+  >
+    <div
+      class="row g-2 gap-2 d-flex align-content-center justify-content-center"
+    >
+      <div
+        class="col-12 col-lg-3 border-1 border-dark-subtle border rounded-2 p-4"
+      >
+        <h3 class="text-center">Basic</h3>
+        <hr />
+        <span class="d-block text-center"
+          >Just a standard visit pass to visit the zoo!</span
+        >
+        <span class="d-block fw-bold text-center fs-3 my-3">£10</span>
+        <a
+          class="d-block btn btn-secondary my-2 border border-dark-subtle border-1"
+          >Buy now</a
+        >
+      </div>
+
+      <div
+        class="col-12 col-lg-3 border-1 border-dark-subtle border rounded-2 p-4"
+      >
+        <h3 class="text-center">Tour</h3>
+        <hr />
+        <span class="d-block text-center"
+          >Get a tour guide to tell you about the animals.</span
+        >
+        <span class="d-block fw-bold text-center fs-3 my-3">£20</span>
+        <a
+          class="d-block btn btn-secondary my-2 border border-dark-subtle border-1"
+          >Buy now</a
+        >
+      </div>
+
+      <div
+        class="col-12 col-lg-3 border-1 border-dark-subtle border rounded-2 p-4"
+      >
+        <h3 class="text-center">Yearly pass</h3>
+        <hr />
+        <span class="d-block text-center"
+          >Full access to the zoo for one whole year.</span
+        >
+        <span class="d-block fw-bold text-center fs-3 my-3">£100</span>
+        <a
+          class="d-block btn btn-secondary my-2 border border-dark-subtle border-1"
+          >Buy now</a
+        >
+      </div>
+    </div>
+  </div>
+  <br /><br />
 </div>
 {% endblock %}

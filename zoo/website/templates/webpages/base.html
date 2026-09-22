@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rigid Zoo</title>
     {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
   <body>
-    {% block content %} {% endblock %}
+    {% include 'components/header.html' %} {% block content %} {% endblock %}
+    <span class="visually-hidden"></span>
+    {% include 'components/footer.html' %}
   </body>
   {% bootstrap_javascript %}
+  <script
+    src="https://cdn.jsdelivr.net/npm/sienna-accessibility/dist/sienna-accessibility.umd.js"
+    defer
+  ></script>
 </html>

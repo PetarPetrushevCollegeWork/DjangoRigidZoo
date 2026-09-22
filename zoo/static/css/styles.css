@@ -1,0 +1,40 @@
+:root {
+  --bs-primary: rgb(8, 138, 40);
+  --bs-primary-rgb: 8, 138, 40;
+  --bs-secondary: #495057;
+  --bs-secondary-rgb: 73, 80, 87;
+}
+#our-animals-section img {
+  max-height: 70vh;
+}
+#hero img {
+  max-width: 1524px;
+}
+#hero-text {
+  padding-top: 5%;
+  left: 10%;
+}
+
+@media (min-width: 1624px) {
+  #hero-text {
+    left: 20vw;
+  }
+}
+@media (min-width: 2500px) {
+  #hero-text {
+    left: 35vw;
+  }
+}
+.circular-primary-container-top {
+  width: 100%;
+  position: absolute;
+  top: -42px;
+  background-color: var(--bs-primary);
+  height: 86px;
+  box-shadow: none;
+  border-radius: 100%;
+  z-index: -1;
+}
+div:has(.circular-primary-container-top) {
+  margin-top: 60px;
+}
