@@ -4,7 +4,7 @@ from .models import Ticket
 from datetime import timedelta
 from django import forms
 from django.utils import timezone
-from django.contrib.admin import widgets                                       
+from django.contrib.admin import widgets
 
 class RegistrationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
