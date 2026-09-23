@@ -1,0 +1,7 @@
+{% extends 'webpages/buy.html' %} {% block buytext %} {% load static %}
+<span class="visually-hidden"></span>
+{% load crispy_forms_tags %}
+<span class="m-5 d-block">Basic ticket - <b>£10</b></span>
+{% endblock %} {% block buymenu %} {% load static %}
+<span class="visually-hidden"></span>
+{{ form|crispy }} {% endblock %}

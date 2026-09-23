@@ -1,22 +1,4 @@
 {% extends 'webpages/base.html' %} {% block content %} {% load static %}
-<div class="bg-primary position-relative text-center" id="hero">
-  <img
-    src="{% static 'images/zoo-animals-photo.jpg' %}"
-    alt="A photo of an elephant, girrafe, lion, and more on a green grass field."
-    class="w-100 opacity-50 user-select-none rounded-2"
-    loading="eager"
-  />
-  <div
-    class="position-absolute top-0 mx-5 text-light my-5 flex-column d-flex"
-    id="hero-text"
-  >
-    <h1 class="fw-bold text-start fs-1">Rigid Zoo</h1>
-    <span class="text-start align-content-start"
-      >A super fun experience for family and friends to view exotic
-      animals.</span
-    >
-  </div>
-</div>
 <h2 class="text-center fw-bold my-5">Our animals</h2>
 <div class="container container-fluid text-center" id="our-animals-section">
   <div class="row">
@@ -80,67 +62,13 @@
     </div>
   </div>
 </div>
-<div
-  class="bg-primary text-light overflow-y-visible position-relative"
-  id="pricing"
->
-  <div class="circular-primary-container-top"></div>
-  <h2 class="text-center fw-bold my-5">Pricing</h2>
-  <div
-    class="container container-fluid d-flex align-content-center justify-content-center"
+<h2 class="text-center fw-bold my-5">Want to meet one of them?</h2>
+<div class="d-flex align-content-center justify-content-center">
+  <a
+    class="btn btn-primary rounded-3 bg-primary border-success"
+    href="/#pricing"
+    >Buy a ticket now</a
   >
-    <div
-      class="row g-2 gap-2 d-flex align-content-center justify-content-center"
-    >
-      <div
-        class="col-12 col-lg-3 border-1 border-dark-subtle border rounded-2 p-4"
-      >
-        <h3 class="text-center">Basic</h3>
-        <hr />
-        <span class="d-block text-center"
-          >Just a standard visit pass to visit the zoo!</span
-        >
-        <span class="d-block fw-bold text-center fs-3 my-3">£10</span>
-        <a
-          class="d-block btn btn-secondary my-2 border border-dark-subtle border-1"
-          href="/buy/basic"
-          >Buy now</a
-        >
-      </div>
-
-      <div
-        class="col-12 col-lg-3 border-1 border-dark-subtle border rounded-2 p-4"
-      >
-        <h3 class="text-center">Tour</h3>
-        <hr />
-        <span class="d-block text-center"
-          >Get a tour guide to tell you about the animals.</span
-        >
-        <span class="d-block fw-bold text-center fs-3 my-3">£20</span>
-        <a
-          class="d-block btn btn-secondary my-2 border border-dark-subtle border-1"
-          href="/buy/tour"
-          >Buy now</a
-        >
-      </div>
-
-      <div
-        class="col-12 col-lg-3 border-1 border-dark-subtle border rounded-2 p-4"
-      >
-        <h3 class="text-center">Yearly pass</h3>
-        <hr />
-        <span class="d-block text-center"
-          >Full access to the zoo for one whole year.</span
-        >
-        <span class="d-block fw-bold text-center fs-3 my-3">£100</span>
-        <a
-          class="d-block btn btn-secondary my-2 border border-dark-subtle border-1"
-          href="/buy/year"
-          >Buy now</a
-        >
-      </div>
-    </div>
-  </div>
-  <br /><br />
 </div>
+<br /><br />
 {% endblock %}

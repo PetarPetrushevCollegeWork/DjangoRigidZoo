@@ -1,0 +1,10 @@
+{% if user.is_authenticated %}
+<span>Signed in as {{ user.username }} </span>
+<form method="post" action="{% url 'logout' %}" class="d-inline mx-3">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-secondary">Sign out</button>
+</form>
+{% else %}
+<a class="btn btn-primary mx-3" href="{% url 'login' %}">Sign in</a>
+<a class="btn btn-secondary mx-3" href="{% url 'register' %}">Register</a>
+{% endif %}
