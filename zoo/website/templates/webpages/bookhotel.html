@@ -1,0 +1,31 @@
+{% extends 'webpages/base.html' %} {% block content %} {% load static %}
+<h2 class="text-center fw-bold my-5">Book a hotel room</h2>
+<div class="container container-fluid">
+  <form method="post">
+    {% load crispy_forms_tags %} {%csrf_token %} {{ form|crispy }}
+    <button class="btn btn-primary bg-primary" type="submit">Book</button>
+  </form>
+</div>
+<script>
+  document.querySelector('[for="id_dateStarting"]').innerText =
+    "Date of arival";
+  document.querySelector('[for="id_dateEnding"]').innerText =
+    "Date of departure";
+
+  document.getElementById("id_dateStarting").setAttribute("required", "true");
+  document.getElementById("id_dateEnding").setAttribute("required", "true");
+
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  const dateToday = yyyy + "-" + mm + "-" + dd;
+
+  document.getElementById("id_dateStarting").setAttribute("min", dateToday);
+  document.getElementById("id_dateStarting").oninput = function () {
+    document
+      .getElementById("id_dateEnding")
+      .setAttribute("min", document.getElementById("id_dateStarting").value);
+  };
+</script>
+{% endblock %}

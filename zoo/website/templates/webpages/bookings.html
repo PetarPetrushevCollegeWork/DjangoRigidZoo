@@ -1,0 +1,122 @@
+{% extends 'webpages/base.html' %} {% block content %} {% load static %}
+<h2 class="text-center fw-bold my-5">My Bookings</h2>
+<p class="text-center">Here you can view your bookings.</p>
+<h2 class="text-center">Tickets</h2>
+<div
+  class="container container-fluid d-flex align-content-center justify-content-center g-3 gap-3 flex-wrap"
+>
+  <script>
+    function dateToUnix(dateStr) {
+      const cleaned = dateStr
+        .replace(/\./g, "")
+        .replace(/Sept/i, "Sep")
+        .replace(/a\s*m/i, "AM")
+        .replace(/p\s*m/i, "PM")
+        .replace(/midnight/i, "12:00 AM");
+
+      return Math.floor(Date.parse(`${cleaned} UTC`) / 1000);
+    }
+
+    function confirmDelete(deleteURL) {
+      if (confirm("Are you sure you want to cancel your ticket/booking?")) {
+        window.location.href = deleteURL;
+      }
+    }
+  </script>
+  {% for booking in tickets %}
+
+  <div
+    id="ticket-{{booking.id}}"
+    class="border border-1 border-black rounded-2 p-2"
+  >
+    <span class="ticketType fs-3 d-block">A ticket</span>
+    <span class="fs-6 d-block fst-italic"
+      >Purchased at {{booking.datePurchased}}</span
+    >
+    <span class="ticketUseDates">Use from <b>{{booking.dateStarting}}</b></span>
+    <a
+      class="text-danger d-block link-underline-opacity-100 fst-italic"
+      href="javascript:confirmDelete('/cancel-ticket/{{booking.id}}')"
+      >Cancel ticket</a
+    >
+  </div>
+
+  <script>
+    ticketType = "{{ booking.ticketType }}";
+    if (ticketType == "basic") {
+      ticketType = "Basic";
+    } else {
+      if (ticketType == "year") {
+        ticketType = "Yearly";
+      } else {
+        ticketType = "Tour";
+      }
+    }
+    document
+      .getElementById("ticket-{{booking.id}}")
+      .getElementsByClassName("ticketType")[0].innerText =
+      ticketType + " ticket";
+
+    yearMultiplier = 1;
+    if (ticketType == "Yearly") {
+      yearMultiplier = 365;
+    }
+
+    document
+      .getElementById("ticket-{{booking.id}}")
+      .getElementsByClassName("ticketUseDates")[0].innerHTML =
+      "Use from <b>{{booking.dateStarting}}</b> to <b>" +
+      new Date(
+        Number(dateToUnix("{{booking.dateStarting}}")) * 1000 +
+          60 * 60 * 24 * 1000 * yearMultiplier,
+      ).toLocaleString() +
+      "</b>";
+  </script>
+
+  {% endfor %}
+</div>
+<br />
+<div
+  class="container container-fluid w-100 d-flex align-content-center justify-content-center"
+>
+  <a href="/#pricing" class="btn btn-primary bg-primary my-3 text-center"
+    >Buy a ticket</a
+  >
+</div>
+
+<h2 class="text-center">Hotel bookings</h2>
+<div
+  class="container container-fluid d-flex align-content-center justify-content-center g-3 gap-3 flex-wrap"
+>
+  {% for hotelBooking in hotelRooms %}
+
+  <div
+    id="hotel-{{hotelBooking.id}}"
+    class="border border-1 border-black rounded-2 p-2"
+  >
+    <span class="ticketType fs-3 d-block"
+      ><span class="text-capitalize">{{hotelBooking.roomSize}}</span> room</span
+    >
+
+    <span class="ticketUseDates"
+      >From <b>{{hotelBooking.dateStarting}}</b> to
+      <b>{{hotelBooking.dateEnding}}</b></span
+    >
+    <a
+      class="text-danger d-block link-underline-opacity-100 fst-italic"
+      href="javascript:confirmDelete('/cancel-booking/{{hotelBooking.id}}')"
+      >Cancel booking</a
+    >
+  </div>
+
+  {% endfor %}
+</div>
+
+<div
+  class="container container-fluid w-100 d-flex align-content-center justify-content-center"
+>
+  <a href="/hotel" class="btn btn-primary bg-primary my-3 text-center"
+    >Book a room</a
+  >
+</div>
+{% endblock %}

@@ -4,6 +4,10 @@
   {% csrf_token %}
   <button type="submit" class="btn btn-secondary">Sign out</button>
 </form>
+<a class="btn btn-secondary mx-3" href="{% url 'bookings' %}"
+  >View my bookings</a
+>
+
 {% else %}
 <a class="btn btn-primary mx-3" href="{% url 'login' %}">Sign in</a>
 <a class="btn btn-secondary mx-3" href="{% url 'register' %}">Register</a>

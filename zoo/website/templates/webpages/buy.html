@@ -4,13 +4,36 @@
 <div class="container container-fluid min-vh-100 text-center">
   <div class="d-flex justify-content-center">
     <div class="row g-2 gap-2 w-100 d-flex justify-content-center">
-      <div class="col-5 border-2 border-black rounded-2 text-center border p-5">
-        <span class="text-center m-5">Placeholder payment portal</span><br />
+      <div
+        class="col-lg-5 col-9 border-2 border-black rounded-2 text-center border p-5"
+      >
+        <span class="text-center">Placeholder payment portal</span><br />
         <br />
-        {% block buymenu %} {% endblock %}
+        <form method="POST" action="{% url 'buy' %}">
+          {% csrf_token %} {% block buymenu %} {% endblock %}
+          <br />
+          <button type="submit" class="btn btn-primary bg-primary">
+            Purchase
+          </button>
+        </form>
       </div>
     </div>
   </div>
   {% block buytext %} {% endblock %}
 </div>
+<script>
+  document.getElementById("id_ticketType").value =
+    "{% block tickettype %}{% endblock %}";
+  document.getElementById("div_id_ticketType").style.display = "none";
+  document.querySelector('[for="id_dateStarting"]').innerText = "Date";
+  document.getElementById("id_dateStarting").setAttribute("required", "true");
+
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  const dateToday = yyyy + "-" + mm + "-" + dd;
+
+  document.getElementById("id_dateStarting").setAttribute("min", dateToday);
+</script>
 {% endblock %}

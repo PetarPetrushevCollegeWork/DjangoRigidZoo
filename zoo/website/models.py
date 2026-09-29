@@ -20,3 +20,18 @@ class Ticket(models.Model):
     )
     datePurchased = models.DateTimeField(auto_now_add=True)
     dateStarting = models.DateTimeField(blank=True)
+
+class HotelRoom(models.Model):
+    
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.PROTECT,
+        related_name="zoo_hotelrooms"
+    )
+    roomSize = models.CharField(
+        max_length=10,
+        choices=[("small","Small"), ("average","Average"), ("large","Large")],
+        default='average',
+    )
+    dateStarting = models.DateTimeField()
+    dateEnding = models.DateTimeField()

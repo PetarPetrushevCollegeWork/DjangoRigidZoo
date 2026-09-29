@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
   <body>
-    {% include 'components/header.html' %} {% block content %} {% endblock %}
+    {% include 'components/header.html' %}
+    <div class="min-vh-100">{% block content %} {% endblock %}</div>
     <span class="visually-hidden"></span>
     {% include 'components/footer.html' %}
   </body>

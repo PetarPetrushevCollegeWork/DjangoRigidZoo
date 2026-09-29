@@ -1,0 +1,19 @@
+{% extends 'webpages/base.html' %} {% block content %} {% load static %}
+<h2 class="text-center fw-bold my-5">Booking</h2>
+<br />
+<div class="container container-fluid text-center">
+  <span
+    class="bg-primary rounded-2 text-light text-center d-block fs-1 fw-bold"
+  >
+    Booked successfully!
+  </span>
+
+  <br />
+  <p>Thanks for booking with us and we hope you enjoy your visit!</p>
+  <br />
+  <i>To view your bookings click the button below.</i><br />
+  <a href="{% url 'bookings' %}" class="btn btn-primary bg-primary my-3"
+    >View my bookings</a
+  >
+</div>
+{% endblock %}

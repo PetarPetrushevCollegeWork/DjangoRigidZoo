@@ -1,0 +1,27 @@
+{% extends 'webpages/base.html' %} {% block content %} {% load static %}
+<h2 class="text-center fw-bold my-5">Our Hotel</h2>
+
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="row row-cols-1 row-cols-lg-3 justify-content-center w-100">
+    <div class="col text-center">
+      <img
+        src="{% static 'images/donkeyinbed.jpg' %}"
+        alt="image of a donkey in the bed"
+        class="img-fluid rounded-2"
+      />
+    </div>
+  </div>
+</div>
+
+<p class="text-center my-2">Nice beds and rooms with AC and TV.</p>
+
+<h2 class="text-center fw-bold my-5">Ready to book?</h2>
+<div class="d-flex align-content-center justify-content-center">
+  <a
+    class="btn btn-primary rounded-3 bg-primary border-success"
+    href="/hotel/book"
+    >Book a room now</a
+  >
+</div>
+<br /><br />
+{% endblock %}
