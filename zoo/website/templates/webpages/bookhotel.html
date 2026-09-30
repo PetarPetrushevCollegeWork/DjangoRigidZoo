@@ -1,10 +1,16 @@
 {% extends 'webpages/base.html' %} {% block content %} {% load static %}
 <h2 class="text-center fw-bold my-5">Book a hotel room</h2>
+<p class="text-center">You will gain <b>100 points</b> for this booking!</p>
 <div class="container container-fluid">
   <form method="post">
     {% load crispy_forms_tags %} {%csrf_token %} {{ form|crispy }}
     <button class="btn btn-primary bg-primary" type="submit">Book</button>
   </form>
+  {% for message in messages %}
+  <span class="visually-hidden"></span>
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <div class="p-2 bg-danger text-white rounded-2 my-3">{{message}}</div>
+  {% endif %} {% endfor %}
 </div>
 <script>
   document.querySelector('[for="id_dateStarting"]').innerText =

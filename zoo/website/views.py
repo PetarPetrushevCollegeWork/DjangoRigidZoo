@@ -6,6 +6,7 @@ from .models import Ticket
 from .forms import TicketForm
 from .forms import HotelForm
 from .models import HotelRoom
+from .models import RewardsPoints
 from django.shortcuts import get_object_or_404
 # Create your views here.
 def home(request):
@@ -61,7 +62,8 @@ def booked(request):
 def bookings(request):
     userTickets = Ticket.objects.filter(user_id=request.user)
     userHotelRooms = HotelRoom.objects.filter(user_id=request.user)
-    return render(request, 'webpages/bookings.html', {"tickets": userTickets, "hotelRooms": userHotelRooms})
+    userPoints = RewardsPoints.objects.get_or_create(user_id=request.user, defaults={'points': 0})[0]
+    return render(request, 'webpages/bookings.html', {"tickets": userTickets, "hotelRooms": userHotelRooms, "userPoints": userPoints.points})
 
 @login_required
 def cancel(request, pk):
@@ -84,11 +86,36 @@ def hotelbook(request):
         form = HotelForm(request.POST)
         if(form.is_valid()):
             form = form.save(commit=False)
+
+            dateStarting = form.dateStarting
+            dateEnding = form.dateEnding
+            roomSize = form.roomSize
+
+            conflicts = HotelRoom.objects.filter(
+                roomSize = roomSize,
+                dateStarting__lt = dateEnding,
+                dateEnding__gt = dateStarting
+            ).count()
+
+            # 5 possible rooms
+
+            if conflicts > 4:
+                messages.error(request,"The booking dates are not available please try another date.")
+                form = HotelForm()
+                return render(request, 'webpages/bookhotel.html', {"form": form})
+
+
+            rewards_obj = RewardsPoints.objects.get_or_create(user_id=request.user.id, defaults={'points': 0})[0]
+            rewards_obj.points += 100
+            rewards_obj.save(update_fields=['points'])
+
             form.user = request.user
             form.save()
             return redirect("booked")
         else:
-            return redirect("bookhotel")
+            form = HotelForm()
+            messages.error(request,"Something went wrong.")
+            return render(request, 'webpages/bookhotel.html', {"form": form})
     else:
         form = HotelForm()
         return render(request, 'webpages/bookhotel.html', {"form": form})

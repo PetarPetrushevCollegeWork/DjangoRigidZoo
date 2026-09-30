@@ -1,6 +1,14 @@
 {% extends 'webpages/base.html' %} {% block content %} {% load static %}
+
+<h2 class="text-center my-3">You have <b>{{userPoints}} points</b>!</h2>
+<p class="text-center">
+  For every 1000 points you earn you can ask reception for a free cookie!
+</p>
+<br />
+
 <h2 class="text-center fw-bold my-5">My Bookings</h2>
 <p class="text-center">Here you can view your bookings.</p>
+
 <h2 class="text-center">Tickets</h2>
 <div
   class="container container-fluid d-flex align-content-center justify-content-center g-3 gap-3 flex-wrap"

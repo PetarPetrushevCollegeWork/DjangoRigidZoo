@@ -35,3 +35,13 @@ class HotelRoom(models.Model):
     )
     dateStarting = models.DateTimeField()
     dateEnding = models.DateTimeField()
+
+
+class RewardsPoints(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.PROTECT,
+        related_name="zoo_rewardpoints",
+        unique=True
+    )
+    points = models.IntegerField()
